@@ -164,7 +164,7 @@ function renderScreen() {
 
     // 2. 最終打包外框 (對應原本最後的 html 變數)
     const fullHtml = `
-    <div style="background-color: transparent ; color: white; font-family: 'monospace'; padding: 15px; height: 230px; width: 100%; box-sizing: border-box;">
+    <div style="background-color: transparent ; color: white; font-family:'Courier New', monospace; padding: 15px; height: 230px; width: 100%; box-sizing: border-box;">
         <div style="display: flex; justify-content: space-between; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.3);">
             <span>13:30:00</span><span>${mode}</span><span>Cell=${focus_sample+1}</span>
         </div>
