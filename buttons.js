@@ -21,7 +21,8 @@ function press(key) {
 
     if (state.input_buffer == 'F5') {
         if (state.mode === "Parameter_Setup") {
-        setMode("PHOTOMETRIC");
+            setMode("PHOTOMETRIC");
+            state.wl = state.PS_values[1] || state.wl;
         } else if (state.mode === "Multi-Cell Parameter_Setup") {
             setMode("Parameter_Setup");
         } else if (state.mode === "PHOTOMETRIC") {
