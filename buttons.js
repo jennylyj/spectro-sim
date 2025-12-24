@@ -9,7 +9,8 @@ let state = {
     abs_val: "0.000",
     results: [],
     sampleList: ["", "", "", "", "", ""],
-    focus_sample: 0 // 預設聚焦在第一個 Well (Index 0)
+    focus_sample: 0, // 預設聚焦在第一個 Well (Index 0)
+    drive_cell_number: 0
 };
 
 //樣品儲存槽
@@ -23,6 +24,7 @@ function press(key) {
         if (state.mode === "Parameter_Setup") {
             setMode("PHOTOMETRIC");
             state.wl = state.PS_values[1] || state.wl;
+            state.drive_cell_number = state.PS_values[0] || state.drive_cell_number;
         } else if (state.mode === "Multi-Cell Parameter_Setup") {
             setMode("Parameter_Setup");
         } else if (state.mode === "PHOTOMETRIC") {
@@ -40,6 +42,7 @@ function press(key) {
         } 
         // 更新 state 數值
         state.wl = state.PS_values[1] || state.wl;
+        state.drive_cell_number = state.PS_values[0] || state.drive_cell_number;
         state.editingIndex = 0;
 
 
@@ -52,7 +55,7 @@ function setMode(newMode) {
     state.mode = newMode;
     state.input_buffer = "";
     if (newMode === "Parameter_Setup") {
-        state.PS_values = ["", "", "ABS", "1", "0", "No"];}
+        state.PS_values = [6, state.wl, "ABS", "1", "0", "No"];}
     else if (newMode === "Multi-Cell Parameter_Setup") {
         state.PS_values = ["6", "Yes"];}
     state.editingIndex = 0;
@@ -136,7 +139,7 @@ function enterValue() {
     updateFocus(); // 確保畫面上的聚焦狀態也更新
 }
 
-// read 鍵邏輯（我還沒寫 sample)
+// read 鍵邏輯
 // 需要多定義的函數：sampleStack(序列0~5) sampleNow(目前樣本) 這個function 要 return
 function readSample() {
     // 取得當前聚焦的樣品名稱
@@ -145,7 +148,7 @@ function readSample() {
     if (state.sampleList[0] === ""){
         alert("目前樣本槽沒有樣品，請先輸入樣品名稱 (A-J)！");
         return;}
-    if (sampleNow === "") {
+    if (sampleNow === "" || state.focus_sample === state.drive_cell_number) {
         return;
     }
 
