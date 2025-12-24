@@ -33,6 +33,7 @@ function press(key) {
 
         // 更新 state 數值
         state.editingIndex = 0;
+        state.input_buffer = "";
 
 
     }
@@ -45,6 +46,7 @@ function press(key) {
         } 
         
         state.editingIndex = 0;
+        state.input_buffer = "";
 
 
     }
