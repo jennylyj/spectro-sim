@@ -5,7 +5,7 @@ let state = {
     input_buffer: "",
     PS_values: ["", "", "ABS", "1", "0", "No"], 
     editingIndex: 0, // 正在編輯第幾項 (0~4),
-    wl: "500.0", // 預設波長
+    wl: "280.0", // 預設波長
     abs_val: "0.000",
     results: [],
     sampleList: ["", "", "", "", "", ""],
