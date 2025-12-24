@@ -69,7 +69,7 @@ function setMode(newMode) {
     if (newMode === "Parameter_Setup") {
         state.PS_values = [6, state.wl, "ABS", "1", "0", "No"];}
     else if (newMode === "Multi-Cell Parameter_Setup") {
-        state.PS_values = ["6", "Yes"];}
+        state.MCPS_values = ["6", "Yes"];}
     state.editingIndex = 0;
     renderScreen(); // 切換模式後自動重繪螢幕內容
 }
@@ -130,7 +130,7 @@ function enterValue() {
     else if (state.mode === "Multi-Cell Parameter_Setup") {
         // 1. 儲存當前 buffer 到對應的索引中
         if (input !== "") {
-            state.PS_values[state.editingIndex] = input;
+            state.MCPS_values[state.editingIndex] = input;
         }
 
         // 2. 跳到下一項
@@ -138,7 +138,7 @@ function enterValue() {
             state.editingIndex++;
         } else {
             // 2 項都填完了
-            console.log("設定完成:", state.PS_values);
+            console.log("設定完成:", state.MCPS_values);
             // 可以選擇回到第一項或切換模式
             state.editingIndex = 0; 
         }
