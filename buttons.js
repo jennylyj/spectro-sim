@@ -39,10 +39,11 @@ function press(key) {
     else if (state.input_buffer == 'F4') {
         if (state.mode === "Parameter_Setup") {
         setMode("Multi-Cell Parameter_Setup");
-        } 
         // 更新 state 數值
         state.wl = state.PS_values[1] ;
         state.drive_cell_number = state.PS_values[0] ;
+        } 
+        
         state.editingIndex = 0;
 
 
