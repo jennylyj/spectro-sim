@@ -1,0 +1,266 @@
+/* --- 1. 全局設定 --- */
+body {
+    background-color: #D6D6D6; /* 儀器外殼灰 */
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* --- 2. 儀器主體 (Container) --- */
+.instrument-case {
+    background-color: #eee;
+    border: 2px solid #999;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.3);
+    display: flex;
+    gap: 20px; /* 左邊螢幕區 與 右邊按鍵區 的間距 */
+}
+
+/* --- 3. 左側區域：螢幕 + F鍵 --- */
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 450px;
+}
+
+/* 螢幕外框 */
+.screen-bezel {
+    background-color: #2A36B1; /* 你的藍色背景 */
+    padding: 0%;
+    border: 15px solid #333;
+    border-radius: 10px;
+}
+
+/* 液晶顯示區 (LCD) */
+.screen-lcd {
+    background-color: #5928e1; /* 模擬 LCD 背光色 */
+    color:white;
+    height: 250px;
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.5);
+    padding: 10px;
+    box-sizing: border-box;
+    font-family: 'Courier New', monospace; /* 等寬字體模擬電子儀器 */
+    position: relative;
+}
+
+/* 顯示數值 */
+#display-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.screen-bottom-bar {
+    border: 1px solid #ffffffb5;
+    font-size: 12px;
+    padding: 2px 4px; 
+    height: 34px;
+    width: 18%; 
+    text-align: left;
+}
+
+/* F1-F5 按鍵列 */
+.f-keys-row {
+    display: flex;
+    justify-content: space-between; /* 自動平均分配間距 */
+    padding: 0 20px;
+}
+
+/* --- 4. 右側區域：按鍵群 --- */
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 數字與功能鍵混合區 (使用 Grid 佈局) */
+.keypad-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 切成 4 直行 */
+    gap: 10px;
+}
+
+/* --- 5. 按鈕樣式設計 --- */
+button {
+    cursor: pointer;
+    border: 1px solid #666;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    font-weight: bold;
+    transition: all 0.1s; /* 按下去的動畫時間 */
+}
+
+button:active {
+    transform: translate(1px, 1px); /* 按下去時往下沉一點 */
+    box-shadow: 0px 0px 0px;
+}
+
+/* 圓形數字鍵 (.num-btn) */
+.btn-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #555; /* 深灰 */
+    color: white;
+    font-size: 20px;
+    border: 2px solid #333;
+}
+
+/* 矩形功能鍵 (.func-btn) */
+.btn-rect {
+    width: 60px;
+    height: 45px;
+    border-radius: 8px;
+    background-color: #BDBDBD;
+    color: black;
+    font-size: 14px;
+}
+
+/* 特殊按鍵：ENTER (佔用兩格寬度範例，或改顏色) */
+.btn-enter {
+    background-color: #004D40; /* 深綠色 */
+    color: white;
+}
+
+/* 下方功能列 */
+.bottom-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+/*輸入時*/
+.param-input:focus {
+    background-color: #ffffff; 
+    color: #8e38ff;
+    outline: none;
+    border: 2px solid white;
+}
+
+/* 模擬反白效果 */
+.input-highlight {
+    background-color: rgb(118, 52, 248); /* 或是螢光綠 */
+    color: white;            /* 藍底白字或白底藍字 */
+    padding: 0 4px;
+    font-weight: bold;
+}
+
+.input-row.active {
+    border-left: 3px solid white; /* 側邊提示線 */
+    padding-left: 5px;
+}
+
+
+/*樣品儲存槽*/
+/* 外層容器讓兩者並排 */
+.main-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0px;
+    padding: 20px;
+}
+
+/* 採樣區域外框 */
+.sample-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 黑色長條儲存格容器 */
+.sample-compartment {
+    width: 80px;
+    height: 400px; /* 根據主機高度調整 */
+    background-color: #1a1a1a; /* 黑色底 */
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px 0;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.3);
+}
+
+/* 模擬蓋子的遮罩 (與主機同色) */
+.lid-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: none; /* 預設開啟 */
+    background-color: #eee;
+    border: 2px solid #999;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.3);
+}
+
+/* 當蓋子關閉時的 class */
+.sample-compartment.closed .lid-cover {
+    display: block;
+}
+
+/* Well 每一列的排版 */
+.well-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    cursor: pointer;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+/* Well 圓孔樣式 */
+.well-circle {
+    width: 40px;
+    height: 40px;
+    background-color: #333;
+    border: 2px inset #555;
+    border-radius: 4px; /* 方形或圓形可自訂 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    color: #00ff00; /* 螢光綠文字模擬科技感 */
+    margin:5px;
+}
+
+.well-row:hover .well-circle {
+    background-color: #444;
+}
+
+.lid-toggle-btn {
+    width: 100px;
+    height: 40px;
+}
+
+/* 聚焦時的樣式 */
+.well-circle.focused {
+    margin: 3px solid #ffffff !important; /* 粗白邊 */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* 白色光暈感 */
+    transform: scale(1.0); 
+    transition: all 0.2s ease;
+}
+
+.open-button {
+    width: 80px;
+    height: 60px; 
+    background-color: #eee;
+    border: 2px solid #999;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.3);
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分光光度計模擬面板</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="main-wrapper">
+    <div class="instrument-case">
+        
+        <div class="left-panel">
+            <div class="screen-bezel"> <!--螢幕顯示器內容（會改變）-->
+                <div class="screen-lcd" id="lcd-screen">
+                    <div style="margin-top: 20px; font-size: 20px; text-align: center;line-height: 120px;" id="main-value">歡迎來到模擬分光光度計</div>
+                    <div style="margin-top: 20px; font-size: 12px; text-align: center;">按任意鍵繼續</div>
+                    <div style="margin-top: 20px; font-size: 12px; text-align: center;">Jun Studio v.1</div>
+                </div>
+            </div>
+            
+            <div class="f-keys-row">
+                <button class="btn-rect">F1</button>
+                <button class="btn-rect">F2</button>
+                <button class="btn-rect">F3</button>
+                <button class="btn-rect" onclick="press('F4')">F4</button>
+                <button class="btn-rect" onclick="press('F5')">F5</button>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            
+            <div class="keypad-grid">
+                <button class="btn-circle" onclick="press('7')">7</button>
+                <button class="btn-circle" onclick="press('8')">8</button>
+                <button class="btn-circle" onclick="press('9')">9</button>
+                <button class="btn-rect" onclick="setMode('SIMPLE_LAMBDA')">λ</button>
+
+                <button class="btn-circle" onclick="press('4')">4</button>
+                <button class="btn-circle" onclick="press('5')">5</button>
+                <button class="btn-circle" onclick="press('6')">6</button>
+                <button class="btn-rect" onclick="clearBuffer()">CLR</button>
+
+                <button class="btn-circle" onclick="press('1')">1</button>
+                <button class="btn-circle" onclick="press('2')">2</button>
+                <button class="btn-circle" onclick="press('3')">3</button>
+                <button class="btn-rect" onclick="setMode('MAIN')">ESC</button>
+
+                <button class="btn-circle" onclick="press('-')">-</button>
+                <button class="btn-circle" onclick="press('0')">0</button>
+                <button class="btn-circle" onclick="press('.')">.</button>
+                <button class="btn-rect">RUN</button>
+            </div>
+
+            <div class="bottom-row">
+                <button class="btn-rect" onclick="readSample()">READ</button>
+                <button class="btn-rect" onclick="resetValue()">AUTO<br>ZERO</button>
+                <button class="btn-rect btn-enter" style="width: 80px;" onclick="enterValue()">ENTER</button>
+            </div>
+
+            <hr style="width: 100%; border-top: 1px solid #ccc;">
+
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <button class="btn-rect" onclick="moveFocus('up')">CELL ︿</button>
+                <button class="btn-rect" onclick="moveFocus('down')">CELL ﹀</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 新增：右側採樣儲存格區域 -->
+    <div class="sample-area">
+        <div class="sample-compartment" id="sample-compartment">
+            <!-- 蓋子狀態 (關閉時顯示) -->
+            <div class="lid-cover" id="lid-cover"></div>
+            
+            <!-- 內部 Well 容器 -->
+            <div class="wells-container" id="wells-container">
+                <!-- 由 JS 動態生成或手寫，這裡示範手寫由上到下是 6->1 -->
+                <div class="well-row" onclick="editWell(5)"><span>6</span><div class="well-circle" id="well-5"></div></div>
+                <div class="well-row" onclick="editWell(4)"><span>5</span><div class="well-circle" id="well-4"></div></div>
+                <div class="well-row" onclick="editWell(3)"><span>4</span><div class="well-circle" id="well-3"></div></div>
+                <div class="well-row" onclick="editWell(2)"><span>3</span><div class="well-circle" id="well-2"></div></div>
+                <div class="well-row" onclick="editWell(1)"><span>2</span><div class="well-circle" id="well-1"></div></div>
+                <div class="well-row" onclick="editWell(0)"><span>1</span><div class="well-circle" id="well-0"></div></div>
+            </div>  
+            
+        </div>
+        <!-- 開關按鈕 -->
+        <button class="open-button" onclick="toggleLid()">OPEN<br>CLOSE</button>
+    </div>
+
+
+    <script src="buttons.js"></script>
+    <script src="screen.js"></script>
+    <script src="sampleDatabase.js"></script>
+    
+    </div>
+</body>
+</html>
