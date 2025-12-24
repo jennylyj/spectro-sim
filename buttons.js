@@ -3,7 +3,7 @@
 let state = {
     mode: "MAIN",
     input_buffer: "",
-    PS_values: ["", "", "ABS", "1", "0", "No"], 
+    PS_values: ["1", "280", "ABS", "1", "0", "No"], 
     editingIndex: 0, // 正在編輯第幾項 (0~4),
     wl: "280.0", // 預設波長
     abs_val: "0.000",
@@ -23,8 +23,8 @@ function press(key) {
     if (state.input_buffer == 'F5') {
         if (state.mode === "Parameter_Setup") {
             setMode("PHOTOMETRIC");
-            state.wl = state.PS_values[1] || state.wl;
-            state.drive_cell_number = state.PS_values[0] || state.drive_cell_number;
+            state.wl = state.PS_values[1];
+            state.drive_cell_number = state.PS_values[0];
         } else if (state.mode === "Multi-Cell Parameter_Setup") {
             setMode("Parameter_Setup");
         } else if (state.mode === "PHOTOMETRIC") {
@@ -41,8 +41,8 @@ function press(key) {
         setMode("Multi-Cell Parameter_Setup");
         } 
         // 更新 state 數值
-        state.wl = state.PS_values[1] || state.wl;
-        state.drive_cell_number = state.PS_values[0] || state.drive_cell_number;
+        state.wl = state.PS_values[1] ;
+        state.drive_cell_number = state.PS_values[0] ;
         state.editingIndex = 0;
 
 
