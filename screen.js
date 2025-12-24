@@ -88,7 +88,7 @@ function renderScreen() {
         rows.forEach((text, i) => {
             const isEditing = (state.editingIndex === i);
             // 如果正在編輯，顯示 buffer 內容並加上反白樣式；否則顯示已存的值
-            const displayValue = isEditing ? (state.input_buffer || "_") : (state.PS_values[i] || "_");
+            const displayValue = isEditing ? (state.input_buffer || "_") : (state.MCPS_values[i] || "_");
             const highlightClass = isEditing ? "input-highlight" : "";
 
             rowsHtml += `
