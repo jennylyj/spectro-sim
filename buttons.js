@@ -29,7 +29,6 @@ function press(key) {
         }
 
         // 更新 state 數值
-        state.wl = state.PS_values[1] || state.wl;
         state.editingIndex = 0;
 
 
