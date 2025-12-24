@@ -3,11 +3,13 @@
 let state = {
     mode: "MAIN",
     input_buffer: "",
-    PS_values: ["1", state.abs_val, "ABS", "1", "0", "No"], 
+    
+    PS_values: ["1", state.abs_val, "ABS", "1", "0", "No"],
+    abs_val: "0.000",
     MCPS_values: [state.drive_cell_number, "Yes"],
     editingIndex: 0, // 正在編輯第幾項 (0~4),
     wl: "280.0", // 預設波長
-    abs_val: "0.000",
+    
     results: [],
     sampleList: ["", "", "", "", "", ""],
     focus_sample: 0, // 預設聚焦在第一個 Well (Index 0)
