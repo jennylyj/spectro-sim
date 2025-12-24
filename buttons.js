@@ -1,19 +1,23 @@
 // 1. 定義變數 (就像 Python 的 st.session_state)
 // 假設這是你的初始狀態
+const defaultWl = "280.0";
+const defaultCell = 0;
+
 let state = {
     mode: "MAIN",
     input_buffer: "",
-
-    wl: "280.0", // 預設波長
-    PS_values: ["1", state.wl, "ABS", "1", "0", "No"],
-    drive_cell_number: 0,
-    MCPS_values: [state.drive_cell_number, "Yes"],
-    editingIndex: 0, // 正在編輯第幾項 (0~4),
-    
+    wl: defaultWl, 
+    // 直接用剛剛定義的常數
+    PS_values: ["1", defaultWl, "ABS", "1", "0", "No"], 
+    drive_cell_number: defaultCell,
+    MCPS_values: [defaultCell, "Yes"],
+    editingIndex: 0,
     results: [],
     sampleList: ["", "", "", "", "", ""],
-    focus_sample: 0, // 預設聚焦在第一個 Well (Index 0)
-    abs_val: "0.000"
+    focus_sample: 0,
+    abs_val: "0.000",
+    wellResults: ["", "", "", "", "", ""],
+    time: "00:00:00"
 };
 
 //樣品儲存槽
