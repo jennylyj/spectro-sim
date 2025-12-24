@@ -141,8 +141,10 @@ function readSample() {
     // 取得當前聚焦的樣品名稱
     let sampleNow = state.sampleList[state.focus_sample];
 
-    if (sampleNow === "") {
+    if (state.sampleList[0] === ""){
         alert("目前樣本槽沒有樣品，請先輸入樣品名稱 (A-J)！");
+        return;}
+    if (sampleNow === "") {
         return;
     }
 
